@@ -11,6 +11,7 @@ public class MoneySystem : MonoBehaviour
     void Start()
     {
         MoneyInc(300);
+        gameObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
     }
     public void MoneyInc(int inc){
         if (inc < 0){
