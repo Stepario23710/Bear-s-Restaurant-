@@ -7,17 +7,18 @@ using UnityEngine.UI;
 public class MoneySystem : MonoBehaviour
 {
     [SerializeField] private Text moneyCounter;
+    [SerializeField] private int firstMoney;
     private int playerMoney = 0;
     void Start()
     {
-        MoneyInc(300);
+        MoneyInc(firstMoney);
         gameObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
     }
     public void MoneyInc(int inc){
-        if (inc < 0){
-            inc = 0;
-        }
         playerMoney += inc;
         moneyCounter.text = (Convert.ToInt32(moneyCounter.text) + inc).ToString();
+    }
+    public int CheckMoney(){
+        return playerMoney;
     }
 }
