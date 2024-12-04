@@ -8,7 +8,7 @@ public class CamMove : MonoBehaviour
     [SerializeField] private float speedZ;
     [SerializeField] private GameObject[] moveTrigs;
     private bool[] canMove = new bool[4]{true, true, true, true};
-    void Update()
+    void FixedUpdate()
     {
         CheckPosForMove();
         MoveX();
