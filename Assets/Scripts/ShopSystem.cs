@@ -76,8 +76,7 @@ public class ShopSystem : MonoBehaviour
             inc--;
         }
         transform.parent.GetComponent<MoneySystem>().MoneyInc(-prices[num]);
-        transform.parent.GetChild(0).GetComponent<InventSystem>().UpdateInc(inc);
-        transform.parent.GetChild(0).GetComponent<InventSystem>().UpdateInvent(new int[]{num});
+        transform.parent.GetChild(0).GetComponent<InventSystem>().UpdateInvent(new (int, int)[]{(num, inc)});
         CheckWhatCanYouBuy();
     }
     private void CheckWhatCanYouBuy(){

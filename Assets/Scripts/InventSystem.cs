@@ -7,11 +7,11 @@ public class InventSystem : MonoBehaviour
 {
     [SerializeField] private GameObject invent;
     private int[] inventList;
-    private int inc;
     void Start()
     {
         inventList = new int[invent.transform.childCount - 1];
-        UpdateInvent(new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15});
+        UpdateInvent(new (int, int)[]{(0, 0),(1, 0),(2, 0),(3, 0),(4, 5),(5, 15),(6, 15),(7, 15),(8, 5),(9, 5),
+         (10, 0),(11, 0),(12, 0),(13, 0),(14, 0),(15, 0)});
         invent.SetActive(false);
     }
     public void ActivateMenu(bool isActivate){
@@ -19,13 +19,10 @@ public class InventSystem : MonoBehaviour
         gameObject.GetComponent<Button>().interactable = !isActivate;
         transform.parent.GetChild(1).GetComponent<Button>().interactable = !isActivate;
     }
-    public void UpdateInvent(int[] things){
+    public void UpdateInvent((int, int)[] things){
         for (int i = 0; i < things.Length; i++){
-            inventList[things[i]] += inc; 
-            invent.transform.GetChild(things[i]).GetChild(0).GetComponent<Text>().text = "x" + inventList[things[i]].ToString();
+            inventList[things[i].Item1] += things[i].Item2; 
+            invent.transform.GetChild(things[i].Item1).GetChild(0).GetComponent<Text>().text = "x" + inventList[things[i].Item1].ToString();
         }
-    }
-    public void UpdateInc(int inc){
-        this.inc = inc;
     }
 }
